@@ -82,9 +82,9 @@ class GuiaRemisionController extends Controller
         $pdf->loadView('pdf.orders.remission',[
             'guia' => $guia,
         ]);
-        $fileName = 'Guia'.$guia->customer->ruc.'-09-T001'.$guia->document_id.'.pdf';
+        $fileName = 'Guia-'.$guia->customer->ruc.'-09-T001'.$guia->document_id.'.pdf';
         $trim = str_replace(' ','',$fileName);
-        return $pdf->stream($trim);
+        return $pdf->download($trim);
     }
 
     public function item(GuiaItemRequest $request, int $id)
